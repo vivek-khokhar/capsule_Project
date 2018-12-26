@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login</title>
+    <title>Header</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -12,24 +13,28 @@
       <div class="content header">
         <div class="img-logo"></div>
         <div>
-          <nav class=" header-middle navigation">
+          <nav class=" header-middle navigation bold">
             <a class="navigation-link">Home</a>
             <a class="navigation-link">Products</a>
           </nav>
         </div>
 
         <div class="cart-container">
-          <div class="text-align-right header-middle background-none"><a>SignIn</a></div>
-          <div class="text-align-right header-middle background-none"><a>Register</a></div>
-          <div class="cart"></div>
+          <nav class="text-align-right header-middle background-none">
+            <a>SignIn</a>
+          </nav>
+          <nav class="text-align-right header-middle background-none">
+            <a>Register</a>
+          </nav>
+          <nav class="cart"></nav>
           <div class="cart-item-count"><span>0 items</span></div>
         </div>
       </div>
     </header>
     <main  class="content login-main">
         <section class="login-section login-section-item1">
-            <div class="heading margin-top-25px">Login</div>
-            <div class="bold margin-top-25px">Get access to your Orders, Wishlist and Recommendations</div>
+            <section class="heading margin-top-25px">Login</section>
+            <section class="bold margin-top-25px">Get access to your Orders, Wishlist and Recommendations</section>
         </section>
         <section class="login-section login-section-item2">
             <form>
@@ -41,10 +46,9 @@
             </form>
             </section>
     </main>
-    <footer>
-      <div role="footer" class="content footer">
-        Copyright © 2011-2018 Sabka Bazar Grocery Supplies Pvt Ltd
-      </div>
+    <footer role="footer">
+        <section class="content footer">Copyright © 2011-2018 Sabka Bazar Grocery Supplies Pvt Ltd</section>
+      
     </footer>
   </body>
 </html>
