@@ -239,6 +239,7 @@ footer {
 .home-column-2-even {
   grid-column-start: 3;
   grid-column-end: 4;
+  order: 2;
 }
 
 .home-column-2-odd {
@@ -255,6 +256,10 @@ footer {
   max-width: max-content;
   padding: 10px;
   margin: 10px;
+}
+
+.home-item:last-child {
+  box-shadow: none;
 }
 
 /**/

@@ -1,4 +1,4 @@
-class TemplateEngine {
+class CarousalComponent {
   constructor(images, targetElement) {
     this.index = 0;
     this.images = images;
@@ -6,7 +6,9 @@ class TemplateEngine {
     this.imageElement = this.crousalImageHtml(images[this.index], this.index);
     images.forEach((img, index) => {
       this.crousalRadioHtml.push(
-        `<span role="radio" for="${img}" class="dot${index === 0 ? ' active' : ''}" data-index="${index}" name="carousal-image-navigation"></span>`
+        `<span role="radio" for="${img}" class="dot${
+          index === 0 ? " active" : ""
+        }" data-index="${index}" name="carousal-image-navigation"></span>`
       );
     });
     this.carousalSection = this.carousalHtmlContainer(
@@ -35,7 +37,9 @@ class TemplateEngine {
     </section>`;
   }
   crousalImageHtml = (img, index) => {
-    return `<img id="imagePlaceHolder" class="carousal-img" src="${img.bannerImageUrl}" alt="offer ${img.bannerImageAlt}" />`;
+    return `<img id="imagePlaceHolder" class="carousal-img" src="${
+      img.bannerImageUrl
+    }" alt="offer ${img.bannerImageAlt}" />`;
   };
 
   updateImage(index) {
@@ -59,11 +63,11 @@ class TemplateEngine {
     this.radios.forEach(radio => {
       radio.classList.remove("active");
     });
-    this.radios[index].classList.add("active");;
+    this.radios[index].classList.add("active");
   };
 
-  radioHandler = (event) => {
-    this.index = parseInt(event.target.attributes['data-index'].value);
+  radioHandler = event => {
+    this.index = parseInt(event.target.attributes["data-index"].value);
     this.updateImage(this.index);
     this.radiosUpdate(this.index);
   };
@@ -71,8 +75,8 @@ class TemplateEngine {
   initalizeEvents() {
     this.prev.addEventListener("click", this.prevHandler);
     this.next.addEventListener("click", this.nextHandler);
-    this.radios.forEach((item) => {
-        item.addEventListener('click', this.radioHandler);
+    this.radios.forEach(item => {
+      item.addEventListener("click", this.radioHandler);
     });
   }
 }
@@ -85,11 +89,57 @@ class TemplateEngine {
 // ];
 
 class HomePageComponent {
-  constructor(categories, ) {
+  constructor(categories, offers, targetElement) {
+    this.categories = [];
+    categories.forEach((info, index) => {
+        this.categories.push(this.categoriesInfoCard(info, index + 1));
+    });
+    document.querySelector(`#${targetElement}`).innerHTML = this.homePageHtml(
+      this.categories,
+      this.carousalPlaceHolder()
+    );
+    // initialize carousal
+    new CarousalComponent(offers, "#carousalPlaceholder");
+  }
 
+  homePageHtml(categories, carousal) {
+    return `<section class="home-container"> ${carousal} ${categories.join(
+      ""
+    )} </section>`;
+  }
+
+  carousalPlaceHolder() {
+    return `<section id="carousalPlaceholder" class="crousal-container home-item"></section>`;
+  }
+
+  categoriesInfoCard(category, index) {
+    return `<section id="productsCategories${index}" class="home-categories home-item">
+    <section  class="${
+      index % 2 === 1 ? "home-column-1-odd" : "home-column-1-even"
+    }"><h3>${category.name}</h3>
+    ${category.description}</br>
+      <input type="button" class="button category-button" value="Explore ${
+        category.key
+      }">
+    </section>
+    <section class="${
+      index % 2 === 1 ? "home-column-2-odd" : "home-column-2-even"
+    }"><img class="category-img" src="${category.imageUrl}" alt="${
+      category.name
+    }"></section>       
+</section>`;
   }
 }
-fetch('http://localhost:5000/banners').then((response) => response.json()).then((data) => {
-    new TemplateEngine(data, "#carousalPlaceholder");
-})
-//let carousal = new TemplateEngine(images, "#carousalPlaceholder");
+let apiRequest1 = fetch("http://localhost:5000/banners").then(response => {
+  return response.json();
+});
+var apiRequest2 = fetch("http://localhost:5000/categories").then(response => {
+  return response.json();
+});
+Promise.all([apiRequest1, apiRequest2]).then(function(values) {
+  values[1].sort((a, b) => a.order - b.order);
+  values[1] =values[1].filter((item) => {
+    return item.enabled;
+  })
+  new HomePageComponent(values[1], values[0], "routerOutlet");
+});
