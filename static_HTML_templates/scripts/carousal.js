@@ -118,7 +118,7 @@ class HomePageComponent {
       index % 2 === 1 ? "home-column-1-odd" : "home-column-1-even"
     }"><h3>${category.name}</h3>
     ${category.description}</br>
-      <input type="button" class="button category-button" value="Explore ${
+      <input type="button" data-id="${category.id}" class="button category-button" value="Explore ${
         category.key
       }">
     </section>

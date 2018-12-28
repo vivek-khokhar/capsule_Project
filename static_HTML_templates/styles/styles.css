@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Dosis:400,600,700");
-
+@import "./dropdown-nav.css";
+@import"./productDetailsPage.css";
 * {
   padding: 0;
   margin: 0;
@@ -20,7 +21,7 @@ header {
 }
 
 .cart {
-  background: url("../static/images/cart.svg") no-repeat;
+  background: url("../../static/images/cart.svg") no-repeat;
   height: 30px;
   margin: 20px 0px 20px 30px;
 }
@@ -41,7 +42,7 @@ header {
 .img-logo {
   width: 140px;
   margin: 5px;
-  background: url("../static/images/logo.png") no-repeat;
+  background: url("../../static/images/logo.png") no-repeat;
   background-size: 135px;
 }
 
@@ -141,8 +142,10 @@ footer {
 }
 
 .home-item {
-  margin: 20px 0px;
-  box-shadow: 0px 50px 25px -40px #888888;
+  margin: 10px;
+  background: radial-gradient(at 50% 0, #888888, transparent 50%);
+  background-size: 100% 8px;
+  background-repeat: no-repeat;
 }
 
 .carousal-image-nav-left {
@@ -199,9 +202,9 @@ footer {
 
 .dot {
   cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
+  height: 10px;
+  width: 10px;
+  margin: 0px 3px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -226,6 +229,7 @@ footer {
   align-self: center;
   text-align: center;
   justify-self: center;
+  margin-top: 10px;
 }
 
 .home-column-1-odd {
@@ -234,18 +238,23 @@ footer {
   align-self: center;
   text-align: center;
   justify-self: center;
+  margin-top: 10px;
 }
 
 .home-column-2-even {
   grid-column-start: 3;
   grid-column-end: 4;
   order: 2;
+  margin-top: 10px;
+  align-self: center;
 }
 
 .home-column-2-odd {
   grid-column-start: 1;
   grid-column-end: 2;
   order: -1;
+  margin-top: 10px;
+  align-self: center;
 }
 
 .category-img {
@@ -264,6 +273,10 @@ footer {
 
 /**/
 
+/* keyboard accessible dropdown*/
+
+/**/
+
 /* Medium Devices */
 @media (min-width: 768px) {
   .header {
@@ -278,7 +291,7 @@ footer {
   .img-logo {
     width: 190px;
     margin: 5px;
-    background: url("../static/images/logo.png") no-repeat;
+    background: url("../../static/images/logo.png") no-repeat;
     background-size: 175px;
   }
 
@@ -298,6 +311,21 @@ footer {
   }
   .login-section-item2 {
     grid-column-start: 3;
+  }
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0px 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active,
+  .dot:hover {
+    background-color: #717171;
   }
 }
 
