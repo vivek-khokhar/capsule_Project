@@ -87,6 +87,12 @@ span.close-overlay {
   font-weight: bold;
   font-size: 16px;
   margin: 0px 10px;
+} 
+
+.overlay-item-section span.quantity {
+    background: none;
+    color: #000000;
+    width: auto;
 }
 
 .overlay-item-price {

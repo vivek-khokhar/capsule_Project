@@ -1,4 +1,7 @@
-class ProductsDetailsPageComponent {
+import LinkDropdownComponent from "./link-dropDown";
+import AsideNavigationComponent from "./asideNav";
+
+export default class ProductsDetailsPageComponent {
   constructor(categories, products, targetEleId) {
       this.productItems = [];
       this.categories ={};

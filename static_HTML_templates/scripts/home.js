@@ -1,3 +1,4 @@
+import CarousalComponent from "./carousal";
 export default class HomePageComponent {
     constructor(categories, offers, targetElement) {
       this.categories = [];
