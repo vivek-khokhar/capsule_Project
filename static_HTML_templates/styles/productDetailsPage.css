@@ -5,10 +5,13 @@
 }
 
 .sidenav a {
-    display: block;
-    margin: 10px 0px;
-    border-bottom: 1px solid #88888888;
-    padding: 10px;
+  display: block;
+  margin: 10px 0px;
+  border-bottom: 1px solid #88888888;
+  padding: 10px;
+  color: #888888;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .pdp-item {
@@ -18,7 +21,13 @@
   border-width: 1px;
   border-style: solid;
   border-width: 0px 2px 0px 0px;
-  margin-top: 20px;
+  margin-top: 15px;
+  display: grid;
+  grid-template-rows: 40px 1fr;
+}
+
+.pdp-item h1 {
+  overflow: hidden;
 }
 
 .item-details-container {
@@ -35,11 +44,15 @@
   align-self: end;
 }
 
-.pdp-description {
-  background: #88888838;
-  max-height: 105px;
+.pdp-description section {
+  max-height: 112px;
   overflow: hidden;
   padding: 5px;
+}
+
+.pdp-description {
+  background: #88888838;
+  overflow: hidden;
 }
 
 .pdp-button {
@@ -56,13 +69,12 @@
     grid-row-end: 2;
   }
   .sidenav {
-      display: block;
-      background-color: #88888838;
-      padding: 20px;
+    display: block;
+    background-color: #88888838;
+    padding: 20px;
   }
 
   .pdp-description {
-    max-height: 100%;
     margin-bottom: 10px;
   }
   .pdp-button {
@@ -76,29 +88,33 @@
 
   .pdp-page-container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
   }
 }
 
 /* Large Devices */
 @media (min-width: 1200px) {
-    .pdp-page-container {
-        width: 80%;
-        margin-left: 10%;
-    }
+  .pdp-page-container {
+    width: 80%;
+    margin-left: 10%;
+  }
 
-    .pdp-item-container {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    .pdp-description {
-         max-height: 89px;
-    }
-    .pdp-button {
-        grid-column-start: 1;
-        grid-column-end: 2;
-    }
+  .pdp-item-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .pdp-description {
+    height: 108px;
+  }
+  .pdp-button {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
 
-    .item-details-container {
-        grid-template-columns: 1fr;
-    }
+  .item-details-container {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-item {
+    grid-template-rows: 60px 1fr;
+  }
 }
