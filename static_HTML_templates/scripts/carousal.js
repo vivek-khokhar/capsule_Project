@@ -1,4 +1,4 @@
-export default class CarousalComponent {
+class CarousalComponent {
   constructor(images, targetElement) {
     this.index = 0;
     this.images = images;
@@ -87,6 +87,50 @@ let apiRequest1 = fetch("http://localhost:5000/banners").then(response => {
 var apiRequest2 = fetch("http://localhost:5000/categories").then(response => {
   return response.json();
 });
+
+class HomePageComponent {
+  constructor(categories, offers, targetElement) {
+    this.categories = [];
+    categories.forEach((info, index) => {
+        this.categories.push(this.categoriesInfoCard(info, index + 1));
+    });
+    document.querySelector(`#${targetElement}`).innerHTML = this.homePageHtml(
+      this.categories,
+      this.carousalPlaceHolder()
+    );
+    // initialize carousal
+    new CarousalComponent(offers, "#carousalPlaceholder");
+  }
+
+  homePageHtml(categories, carousal) {
+    return `<section class="home-container"> ${carousal} ${categories.join(
+      ""
+    )} </section>`;
+  }
+
+  carousalPlaceHolder() {
+    return `<section id="carousalPlaceholder" class="crousal-container home-item"></section>`;
+  }
+
+  categoriesInfoCard(category, index) {
+    return `<section id="productsCategories${index}" class="home-categories home-item">
+    <section  class="${
+      index % 2 === 1 ? "home-column-1-odd" : "home-column-1-even"
+    }"><h3>${category.name}</h3>
+    ${category.description}</br>
+      <input type="button" data-id="${category.id}" class="button category-button" value="Explore ${
+        category.key
+      }">
+    </section>
+    <section class="${
+      index % 2 === 1 ? "home-column-2-odd" : "home-column-2-even"
+    }"><img class="category-img" src="${category.imageUrl}" alt="${
+      category.name
+    }"></section>       
+</section>`;
+  }
+} 
+
 Promise.all([apiRequest1, apiRequest2]).then(function(values) {
   values[1].sort((a, b) => a.order - b.order);
   values[1] =values[1].filter((item) => {

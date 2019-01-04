@@ -44,7 +44,7 @@
     left: 0;
   }
   .dropdown-nav ul li:hover ul a, .dropdown-nav ul li.hover ul a {
-    background: #d4278f;
+    background: #e4aacd;
     color: #fff;
     border: 1px solid #fff;
     padding: 5px 10px;

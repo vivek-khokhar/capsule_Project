@@ -1,4 +1,11 @@
-import HomePageComponent from './'
+import HomePageComponent from './scripts/home';
+import DataAccessLayer from './services/dal';
+import CartService from './services/cartService';
+import ProductsDetailsPageComponent from './scripts/productDetailsPage';
+import SignInComponent from './scripts/signIn';
+import RegisterComponent from './scripts/register';
+import CartOverlayComponent from './scripts/cart-Overlay';
+import  './styles/styles.scss';
 
 export default class RouterConfigurationService {
   constructor(dal = new DataAccessLayer(), cartService = new CartService()) {
@@ -16,7 +23,7 @@ export default class RouterConfigurationService {
     });
   }
 
-  products(param) {
+  productsPage(param) {
     Promise.all([this.categories, this.products]).then(values => {
       new ProductsDetailsPageComponent(
         values[0],
@@ -34,7 +41,7 @@ export default class RouterConfigurationService {
         this.homeRoute();
         break;
       case "#products":
-        products(param);
+        this.productsPage(param);
         break;
       case "#signIn":
         new SignInComponent("routerOutlet");
@@ -64,5 +71,4 @@ export default class RouterConfigurationService {
     }
   }
 }
-
 new RouterConfigurationService();

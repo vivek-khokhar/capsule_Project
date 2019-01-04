@@ -110,9 +110,7 @@ export default class CartOverlayComponent {
             item.addEventListener('click', (ele) => {
                 let selectedItem = ele.target.attributes['data-index'].value;
                 selectedItem = this.cartService.getItemBySKU(selectedItem);
-                this.cartService.removeFromeCart(selectedItem);
-                console.log(this.cartService.getCartItems());
-                
+                this.cartService.removeFromeCart(selectedItem);                
         })
         
         })

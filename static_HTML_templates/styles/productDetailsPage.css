@@ -14,6 +14,11 @@
   font-weight: 600;
 }
 
+.sidenav a.active {
+  color: #ffffffff;
+  background-color: #d4278f;
+}
+
 .pdp-item {
   padding: 10px;
   border-image: linear-gradient(to bottom, #ffffffff, #88888838, #ffffffff) 0.5
