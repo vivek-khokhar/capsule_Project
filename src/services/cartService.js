@@ -1,18 +1,21 @@
 export default class CartService {
-    constructor() {
+    constructor(dal) {
       this.cartItems = [];
+      this.dal = dal;
     }
   
     addToCart(item) {
-      let itemIndex = this.cartItems.findIndex(prdct => {
-        return prdct.sku === item.sku;
-      });
-      if (itemIndex > -1) {
-        this.cartItems[itemIndex].quantity += 1;
-      } else {
-        item.quantity = 1;
-        this.cartItems.push(item);
-      }
+      this.dal.addToCart(item).then((result) => {
+        let itemIndex = this.cartItems.findIndex(prdct => {
+          return prdct.sku === item.sku;
+        });
+        if (itemIndex > -1) {
+          this.cartItems[itemIndex].quantity += 1;
+        } else {
+          item.quantity = 1;
+          this.cartItems.push(item);
+        }
+      }).catch( err => console.log(err))
     }
   
     removeFromeCart(item) {

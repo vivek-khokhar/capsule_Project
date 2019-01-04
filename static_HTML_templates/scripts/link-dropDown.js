@@ -542,7 +542,18 @@ class CarousalComponent {
 class SignInComponent {
   constructor(targetEl) {
     document.querySelector(`#${targetEl}`).innerHTML = this.signInTemplate();
+    this.eventsHookUp();
   }
+
+  eventsHookUp() {
+    document.querySelectorAll('[class="form-input"]').forEach((item) => {
+        item.addEventListener('focus',(event) => {
+            const type = event.target.attributes['type'].value;
+            document.querySelector(`[for="${type}"]`).classList.remove('hidden');
+        })
+    })
+
+}
 
   signInTemplate() {
     return `<section  class="content login-main">
@@ -556,7 +567,7 @@ class SignInComponent {
                 <input class="form-input" type="email" id="email" placeholder="Email" required>
                 <label class="form-label bold hidden" for="password">Password</label>
                 <input class="form-input" type="password" id="password" placeholder="Password" required>
-                <button class="button">Login</button></div>
+                <button id="login" class="button" disabled>Login</button></div>
             </form>
             </section>
     </section>`;

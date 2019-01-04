@@ -1,6 +1,16 @@
 export default class RegisterComponent {
     constructor(targetEl) {
       document.querySelector(`#${targetEl}`).innerHTML = this.signInTemplate();
+      this.eventsHookUp();
+    }
+
+    eventsHookUp() {
+        document.querySelectorAll('[class="form-input"]').forEach((item) => {
+            item.addEventListener('focus',(event) => {
+                const type = event.target.attributes['type'].value;
+                document.querySelector(`[for="${type}"]`).classList.remove('hidden');
+            })
+        })
     }
   
     signInTemplate() {

@@ -1,6 +1,7 @@
 export default class SignInComponent{
     constructor(targetEl) {
         document.querySelector(`#${targetEl}`).innerHTML = this.signInTemplate();
+        this.eventsHookUp();
     }
 
     signInTemplate() {
@@ -19,5 +20,14 @@ export default class SignInComponent{
             </form>
             </section>
     </section>`;
+    }
+
+    eventsHookUp() {
+        document.querySelectorAll('[class="form-input"]').forEach((item) => {
+            item.addEventListener('focus',(event) => {
+                const type = event.target.attributes['type'].value;
+                document.querySelector(`[for="${type}"]`).classList.remove('hidden');
+            })
+        })
     }
 }

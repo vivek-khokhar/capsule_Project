@@ -8,8 +8,8 @@ import CartOverlayComponent from './scripts/cart-Overlay';
 import  './styles/styles.scss';
 
 export default class RouterConfigurationService {
-  constructor(dal = new DataAccessLayer(), cartService = new CartService()) {
-    this.cartService = cartService;
+  constructor(dal = new DataAccessLayer()) {
+    this.cartService = new CartService(dal);
     this.banners = dal.banners();
     this.categories = dal.categories();
     this.products = dal.products();
