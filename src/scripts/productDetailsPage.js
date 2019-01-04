@@ -64,10 +64,10 @@ export default class ProductsDetailsPageComponent {
       document
         .querySelector(`#${item.sku}-buyNow`)
         .addEventListener("click", e => {
-          this.cartService.addToCart(item);
-          let itemCount = this.cartService.cartItemCount();
-          document.querySelector("#cartCount").innerText =
-            itemCount + ` item${itemCount > 1 ? "s" : ""}`;
+          this.cartService.addToCart(item).then(itemCount => {
+            document.querySelector("#cartCount").innerText =
+              itemCount + ` item${itemCount > 1 ? "s" : ""}`;
+          });
         });
     });
   }

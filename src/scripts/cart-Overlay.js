@@ -78,12 +78,13 @@ export default class CartOverlayComponent {
     let eventType = type == "add" ? "addToCart" : "removeFromeCart";
     let selectedItem = ele.target.attributes["data-index"].value;
     selectedItem = this.cartService.getItemBySKU(selectedItem);
-    let itemRemoved = this.cartService[eventType](selectedItem);
-    if (itemRemoved) {
-      this.removeCartItem(itemRemoved[0]);
-    } else {
-      this.updateCartItem(selectedItem);
-    }
+    this.cartService[eventType](selectedItem).then(itemRemoved => {
+      if (itemRemoved) {
+        this.removeCartItem(itemRemoved[0]);
+      } else {
+        this.updateCartItem(selectedItem);
+      }
+    });
   }
 
   cartItemEvents() {
@@ -123,9 +124,8 @@ export default class CartOverlayComponent {
     let itemCount = this.cartService.cartItemCount();
     document.querySelector("#cartCount").innerText =
       itemCount + ` item${itemCount > 1 ? "s" : ""}`;
-      document.querySelector("#cartTitleCount").innerText = '(' + itemCount ?
-      itemCount + ` item${itemCount > 1 ? "s" : ""})` :
-      '';
+    document.querySelector("#cartTitleCount").innerText =
+      "(" + itemCount ? itemCount + ` item${itemCount > 1 ? "s" : ""})` : "";
   }
 
   removeCartItem(selectedItem) {
@@ -133,9 +133,8 @@ export default class CartOverlayComponent {
     let itemCount = this.cartService.cartItemCount();
     document.querySelector("#cartCount").innerText =
       itemCount + ` item${itemCount > 1 ? "s" : ""}`;
-      document.querySelector("#cartTitleCount").innerText = '(' + itemCount ?
-      itemCount + ` item${itemCount > 1 ? "s" : ""})` :
-      '';
+    document.querySelector("#cartTitleCount").innerText =
+      "(" + itemCount ? itemCount + ` item${itemCount > 1 ? "s" : ""})` : "";
     document.querySelector(`#cartTotalPrice`).innerText =
       "Rs. " + this.cartService.getCartTotalPrice().toString() + "  >";
     if (this.cartService.cartItemCount() === 0) {
