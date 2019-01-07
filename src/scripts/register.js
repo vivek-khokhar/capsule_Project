@@ -57,7 +57,7 @@ checkPageValidation() {
             }
         }
     }
-    return key;
+    return valid;
 }
 
 eventsHookUp() {
