@@ -27,7 +27,7 @@ export default class LinkDropdownComponent {
     }
   
     dropDownLink(category, selectedCategory) {
-      return `<li><a id="${category.id}"href="#products/${category.key}" ">${
+      return `<li><a id="dropdown-${category.key}"href="#products/${category.key}" ">${
         category.name
       }</a></li>`;
     }

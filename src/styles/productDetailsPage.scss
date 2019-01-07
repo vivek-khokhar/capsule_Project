@@ -1,6 +1,8 @@
 .pdp-item-container,
 .pdp-page-container {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
 }
 
@@ -21,13 +23,19 @@
 
 .pdp-item {
   padding: 10px;
+  -o-border-image: linear-gradient(to bottom, #ffffffff, #88888838, #ffffffff)
+    0.5 100%;
+  border-image: -webkit-linear-gradient(top, #ffffffff, #88888838, #ffffffff)
+    0.5 100%;
   border-image: linear-gradient(to bottom, #ffffffff, #88888838, #ffffffff) 0.5
     100%;
   border-width: 1px;
   border-style: solid;
   border-width: 0px 2px 0px 0px;
   margin-top: 15px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 40px 1fr;
   grid-template-rows: 40px 1fr;
 }
 
@@ -36,7 +44,9 @@
 }
 
 .item-details-container {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 0.9fr 1.1fr;
   grid-template-columns: 0.9fr 1.1fr;
   border-bottom: 2px #88888838 dotted;
   margin-top: 10px;
@@ -44,8 +54,12 @@
 
 .pdp-image {
   width: 100%;
+  -ms-grid-row: 1;
+  grid-row: 1;
   grid-row-start: 1;
   grid-row-end: 3;
+  -ms-flex-item-align: end;
+  -ms-grid-row-align: end;
   align-self: end;
 }
 
@@ -61,6 +75,8 @@
 }
 
 .pdp-button {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
 }
 
@@ -70,6 +86,8 @@
 /* Medium Devices */
 @media (min-width: 768px) {
   .pdp-image {
+    -ms-grid-row: 1;
+    grid-row: 1;
     grid-row-start: 1;
     grid-row-end: 2;
   }
@@ -83,16 +101,22 @@
     margin-bottom: 10px;
   }
   .pdp-button {
+    -ms-grid-column: 1;
+    grid-column: 1;
     grid-column-start: 1;
     grid-column-end: 3;
   }
   .pdp-item-container {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
 
   .pdp-page-container {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr 3fr;
     grid-template-columns: 1fr 3fr;
   }
 }
@@ -105,21 +129,26 @@
   }
 
   .pdp-item-container {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .pdp-description {
     height: 108px;
   }
   .pdp-button {
+    -ms-grid-column: 1;
+    grid-column: 1;
     grid-column-start: 1;
     grid-column-end: 2;
   }
 
   .item-details-container {
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
   }
 
   .pdp-item {
+    -ms-grid-rows: 60px 1fr;
     grid-template-rows: 60px 1fr;
   }
 }

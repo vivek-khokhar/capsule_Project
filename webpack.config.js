@@ -15,6 +15,17 @@ const CSSModuleLoader = {
   }
 };
 
+const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
+
+const autoprefixer_ref = new webpack.LoaderOptionsPlugin({
+    options: {
+        postcss: [
+            autoprefixer()
+        ]
+    }
+})
+
 const CSSLoader = {
   loader: "css-loader",
   options: {
@@ -27,17 +38,17 @@ const CSSLoader = {
 const modernizr = require("modernizr");
 
 module.exports = {
-  entry: ["@babel/polyfill", "./src"],
+  entry: ["@babel/polyfill", "./src", "./src/styles/styles.scss"],
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ["style-loader", "css-loader", "postcss-loader"]
       },
       {
         test: /\.scss$/,
@@ -176,5 +187,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlPlugin]
+  plugins: [htmlPlugin, autoprefixer_ref]
 };

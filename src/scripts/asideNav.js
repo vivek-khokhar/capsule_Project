@@ -19,7 +19,7 @@ export default class AsideNavigationComponent {
     navLink(category, selected) {
       return `<a class = "${
         selected && selected === category.key ? "active" : ""
-      }"id="${category.id}"href="#products/${category.key}" ">${
+      }"id="side-${category.key}"href="#products/${category.key}" ">${
         category.name
       }</a>`;
     }

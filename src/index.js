@@ -5,7 +5,7 @@ import ProductsDetailsPageComponent from './scripts/productDetailsPage';
 import SignInComponent from './scripts/signIn';
 import RegisterComponent from './scripts/register';
 import CartOverlayComponent from './scripts/cart-Overlay';
-import  './styles/styles.scss';
+// import  './styles/styles.scss';
 
 export default class RouterConfigurationService {
   constructor(dal = new DataAccessLayer()) {

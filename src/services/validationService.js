@@ -1,4 +1,13 @@
 export default class ValidationService{
+    validationMapper(type, value) {
+        switch (type) {
+            case email:
+                return this.validateEmail(value);
+            case password:
+                return this.validateAlphaNumeric(value);
+            
+        }
+    }
 
     validateEmail(email) {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

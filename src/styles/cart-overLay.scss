@@ -1,4 +1,4 @@
- .overlay {
+.overlay {
   position: fixed;
   z-index: 10;
   padding-top: 100px;
@@ -11,12 +11,15 @@
 }
 
 .overlay-wrapper {
+  display: -ms-grid;
   display: grid;
   height: 100%;
 }
 
 .overlay-item {
-  grid-column-start: 3;
+	-ms-grid-column: 3;
+	grid-column: 3;
+      grid-column-start: 3;
   grid-column-end: 1;
   background-color: rgb(215, 213, 216);
   color: rgb(255, 255, 255);
@@ -52,8 +55,10 @@
 .overlay-item-section {
   background-color: rgb(255, 255, 255);
   margin-top: 10px;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 15% 1fr 15%;
+  -ms-grid-columns: 15% 1fr 15%;
+      grid-template-columns: 15% 1fr 15%;
   padding: 15px;
   color: rgb(0, 0, 0);
 }
@@ -64,7 +69,9 @@
 
 .overlay-item-section section {
   padding: 0px 10px;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .overlay-item-section section.item-title {
@@ -123,8 +130,10 @@
 
 .lowest-price-banner {
   background-color: #ffffffff;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 20% 1fr;
+  -ms-grid-columns: 20% 1fr;
+      grid-template-columns: 20% 1fr;
   padding: 15px;
   color: black;
   margin: 15px;
@@ -138,11 +147,15 @@
 .lowest-price-banner section {
   padding: 5px 15px;
   font-weight: 600;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .overlay-item .empty-cart {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   padding: 40% 0px;
   background-color: #ffffffff;
   color: #000000;
@@ -167,12 +180,15 @@
   .overlay-wrapper {
     width: 40%;
     margin-left: 50%;
-    grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 
   .overlay-item {
     grid-column-end: 2;
-    grid-column-start: 1;
+		-ms-grid-column: 1;
+		grid-column: 1;
+        grid-column-start: 1;
   }
 
   .overlay-item h1 {
